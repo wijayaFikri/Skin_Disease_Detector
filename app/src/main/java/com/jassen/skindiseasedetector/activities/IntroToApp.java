@@ -1,4 +1,4 @@
-package com.jassen.skindiseasedetector;
+package com.jassen.skindiseasedetector.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import com.github.appintro.AppIntro;
 import com.github.appintro.AppIntroFragment;
 import com.github.appintro.AppIntroPageTransformerType;
+import com.jassen.skindiseasedetector.R;
 
 public class IntroToApp extends AppIntro {
 

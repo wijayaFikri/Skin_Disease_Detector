@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,12 +20,12 @@
         android:fontFamily="@font/title_font"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/register_password_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:hint="Password"
         android:background="@drawable/button_background"
         android:padding="16dp"
@@ -36,14 +36,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/register_email_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"
         android:ems="10"
         android:background="@drawable/button_background"
         android:padding="16dp"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:hint="Email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/register_username_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"
@@ -69,12 +69,14 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:text="Register"
         android:background="@drawable/button_background_inverted"
         android:textColor="#ffffff"
+        android:onClick="processRegister"
         android:layout_marginHorizontal="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.jassen.skindiseasedetector;
+package com.jassen.skindiseasedetector.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.jassen.skindiseasedetector.R;
 
 import static com.jassen.skindiseasedetector.ApplicationConstants.MY_PREF;
 
@@ -39,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             assert extras != null;
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            ImageView imageView = findViewById(R.id.camera_image_holder);
-            imageView.setImageBitmap(imageBitmap);
-            TextView tv = findViewById(R.id.command_text_view);
-            tv.setVisibility(View.INVISIBLE);
+            Intent intent = new Intent(mContext,CameraResultActivity.class);
+            intent.putExtra("data",(Bitmap) extras.get("data"));
+            startActivity(intent);
+
            /* Toast.makeText(mContext,"ada adada ada dadad",
                     Toast.LENGTH_LONG).show();*/
         }

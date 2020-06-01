@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context=".activities.ProcessingActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Please Wait"
+        android:textSize="32sp"
+        android:layout_weight="0.05"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/data_process"
+        android:scaleType="fitXY"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:text="Please wait the system is currently diagnosing the picture"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
