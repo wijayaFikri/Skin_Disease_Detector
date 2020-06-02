@@ -65,10 +65,22 @@
         android:background="@drawable/border_black"
         android:layout_marginHorizontal="32dp">
 
-        <ListView
-            android:id="@+id/symptoms_listView"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/symptoms_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="symptoms"/>
+            </LinearLayout>
+        </ScrollView>
+
+
 
     </LinearLayout>
     <TextView
@@ -95,14 +107,25 @@
         android:layout_marginHorizontal="32dp"
         android:background="@drawable/border_black">
 
-        <ListView
-            android:id="@+id/how_to_cure_listView"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/cure_method_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="htc"/>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
     <Button
+        android:onClick="finishProcess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"

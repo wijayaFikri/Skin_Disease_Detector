@@ -10,13 +10,20 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jassen.skindiseasedetector.R;
+import com.jassen.skindiseasedetector.models.Disease;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.jassen.skindiseasedetector.ApplicationConstants.MY_PREF;
 
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Context mContext = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,19 +45,16 @@ public class MainActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             assert extras != null;
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            Intent intent = new Intent(mContext,CameraResultActivity.class);
-            intent.putExtra("data",(Bitmap) extras.get("data"));
+            Intent intent = new Intent(mContext, CameraResultActivity.class);
+            intent.putExtra("data", (Bitmap) extras.get("data"));
             startActivity(intent);
-
-           /* Toast.makeText(mContext,"ada adada ada dadad",
-                    Toast.LENGTH_LONG).show();*/
         }
     }
 
-    public void checkFirstLogin(){
-        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF,MODE_PRIVATE);
-        int status = sharedPreferences.getInt("FIRST_LOGIN",0);
-        if (status == 0){
+    public void checkFirstLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF, MODE_PRIVATE);
+        int status = sharedPreferences.getInt("FIRST_LOGIN", 0);
+        if (status == 0) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             try {
                 editor.putInt("FIRST_LOGIN", 1);
