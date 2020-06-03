@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jassen.skindiseasedetector.R;
@@ -23,11 +25,13 @@ import static com.jassen.skindiseasedetector.ApplicationConstants.MY_PREF;
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Context mContext = this;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
         checkFirstLogin();
     }
 
@@ -69,5 +73,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void goTakePicture(View view) {
         dispatchTakePictureIntent();
+    }
+
+    public void goLogout(View view) {
+        mAuth.signOut();
+        Intent intent = new Intent(this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void goHistory(View view) {
+        Intent intent = new Intent(this,HistoryActivity.class);
+        startActivity(intent);
     }
 }

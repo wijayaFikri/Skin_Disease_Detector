@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.jassen.skindiseasedetector.R;
 import com.jassen.skindiseasedetector.models.Disease;
+import com.jassen.skindiseasedetector.models.History;
 import com.jassen.skindiseasedetector.retrofit.CallApi;
 import com.jassen.skindiseasedetector.retrofit.SddRetrofit;
 
@@ -25,6 +27,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import static com.jassen.skindiseasedetector.ApplicationConstants.CATEGORY_PREF;
+import static com.jassen.skindiseasedetector.ApplicationConstants.HISTORY_REF;
 
 public class ProcessingActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -44,7 +47,7 @@ public class ProcessingActivity extends AppCompatActivity {
             public void onSuccess(final String result) {
                 final Intent intent = new Intent(ProcessingActivity.this, ProcessResultActivity.class);
                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference();
+                final DatabaseReference myRef = database.getReference();
                 myRef.child(CATEGORY_PREF).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -57,6 +60,12 @@ public class ProcessingActivity extends AppCompatActivity {
                         intent.putExtra("data", imageResult);
                         Disease disease = list.get(Integer.parseInt(result));
                         intent.putExtra("disease", new Gson().toJson(disease));
+                        History history = new History();
+                        history.setImageBase64(convertBitmapToBase64(imageResult));
+                        history.setResult(disease.getName());
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        assert user != null;
+                        myRef.child(HISTORY_REF).child(user.getUid()).push().setValue(history);
                         startActivity(intent);
                         finish();
                     }

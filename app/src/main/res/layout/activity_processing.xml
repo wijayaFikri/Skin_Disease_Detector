@@ -18,13 +18,13 @@
         android:layout_height="0dp"
         android:text="Please Wait"
         android:textSize="32sp"
-        android:layout_weight="0.05"
+        android:layout_weight="0.1"
         android:layout_gravity="center"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"/>
+        android:layout_weight="0.05"/>
 
     <ImageView
         android:layout_width="match_parent"
